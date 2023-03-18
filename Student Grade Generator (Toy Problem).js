@@ -18,11 +18,12 @@ function grader(grade){
 
 
 function question(){
-    let input = prompt("what grade did you get? ")
-    let grade = parseInt(input)
+    let grade = prompt("what grade did you get? ")
+    
     while (isNaN(grade)){
-        let input2 = prompt("wrong input. Please enter valid input: ")
-        let grade = parseInt(input2)
+        grade = prompt("wrong input. Please enter valid input: ")
+        
     }
     return grader(grade)
 }
+question()
