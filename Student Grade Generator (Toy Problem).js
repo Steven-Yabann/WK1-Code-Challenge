@@ -1,3 +1,4 @@
+// function determines the grade if the student from his/her marks
 function grader(grade){
     if (grade > 79){
         return('A')
@@ -16,7 +17,7 @@ function grader(grade){
     }
 }
 
-
+// function that is declared to receive the input as marks and determines if the input is a number or not 
 function question(){
     let grade = prompt("what grade did you get? ")
     

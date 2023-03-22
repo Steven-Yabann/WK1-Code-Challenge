@@ -1,13 +1,22 @@
+// function that calculates the payee
 function payeCalculator (grossSalary) {
-    const personalRelief = 2400
-    const insuraceRelief = 5000
-    const housingRelief = 9000
+    const personal_Relief = 2400
+    const insurace_Relief = 5000
+    const housing_Relief = 9000
     const PENSION_CONTRIBUTION = 20000
     const DISABILITY_EXEMPTION = 150000
     const OWNER_INTEREST = 25000
 
-
+    //another function that determines other deductions to be removed from the gross salary by receiving further input from the user
     function taxablePaycalculator(grossSalary){
+        let personalRelief = 0
+        let insuraceRelief = 0
+        let housingRelief = 0
+        if (prompt(`do you have an insurance (y or n): `) === `y`){
+            personalRelief = personal_Relief
+            insuraceRelief = insurace_Relief
+            housingRelief = housing_Relief
+        }
         let pensionFundContribution = 0
         if (prompt(`do you have a pension fund contribution (y or n): `) === `y`){
             pensionFundContribution = PENSION_CONTRIBUTION
@@ -48,6 +57,7 @@ function payeCalculator (grossSalary) {
 
 }
 
+// function that calculates the NHIF deduction using the gross salary input
 function NHIF_calculator (grossSalary) {
     if (grossSalary <= 5999){
         const deduction = 150
@@ -105,6 +115,7 @@ function NHIF_calculator (grossSalary) {
     }
 }
 
+// function that calculates the NSSF deduction from the gross salary
 function nssfCalculator(grossSalary){
     const nssfMax = 2160
     let nssf
@@ -118,6 +129,7 @@ function nssfCalculator(grossSalary){
     }
 }
 
+// function that receives the basic salary and benefits from the user and calls all of the above functions to calculates the various deductions
 function taxCalculator(){
     let salary = prompt(`tell me your salary: `)
     let benefits = prompt(`tell me your benefits: `)
@@ -132,6 +144,8 @@ function taxCalculator(){
     let paye = payeCalculator(grossSalary)
     let deduction = NHIF_calculator(grossSalary)
     let nssf = nssfCalculator(grossSalary)
+    
+    //anonymous function that calulates the net salary
     let netSalary = (grossSalary) => { 
         return grossSalary-nssf-deduction-paye}
 
